@@ -1,0 +1,13 @@
+###phase 1 to build a jar
+FROM eclipse-temurin:21 AS build
+WORKDIR /build
+COPY pom.xml .
+COPY src ./src
+RUN mvn package -DskipTests
+
+###phase 2 to expose that jar
+FROM eclipse-temurin:21-jre
+WORKDIR /app
+COPY --from build=/build/target/*.jar app.jar
+EXPOSE 8080
+ENTRYPOINT ["java", "-jar", "app.jar"]
