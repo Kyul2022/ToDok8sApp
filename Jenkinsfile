@@ -58,7 +58,7 @@ spec:
     - name: docker-sock
       mountPath: /var/run/docker.sock
     - name: docker-hub-secret
-      mountPath: /root/.docker
+      mountPath: /tmp/.docker
   volumes:
     - name: docker-sock
       hostPath:
@@ -77,6 +77,8 @@ spec:
                 container('docker') {
                     script {
                         sh '''
+                        mkdir -p /root/.docker
+                        cd /tmp/.docker/config.json /root/.docker/config.json
                         docker build -t kyul1234/todo4k8s:latest .
                         docker push kyul1234/todo4k8s:latest
                         '''
