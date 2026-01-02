@@ -28,9 +28,7 @@ spec:
                     script {
                             sh '''
         echo "=== Debug ==="
-        ls -la src/test/resources/
-        cat src/test/resources/application-test.properties
-        
+        ls -la src/test/resources/        
         echo "=== Tests ==="
         mvn clean test
     '''
