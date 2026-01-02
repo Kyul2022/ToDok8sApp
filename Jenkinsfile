@@ -78,7 +78,7 @@ spec:
                     script {
                         sh '''
                         mkdir -p /root/.docker
-                        cd /tmp/.docker/config.json /root/.docker/config.json
+                        cp /tmp/.docker/config.json /root/.docker/config.json
                         docker build -t kyul1234/todo4k8s:latest .
                         docker push kyul1234/todo4k8s:latest
                         '''
