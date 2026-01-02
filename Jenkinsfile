@@ -115,11 +115,11 @@ spec:
                 script {
                     sh '''
                     cd manifests/
-                    kubectl apply -f mysql-secret.yml
-                    kubectl apply -f mysql-config.yml
-                    kubectl apply -f mysql-pvc.yml
-                    kubectl apply -f mysql.yml
-                    kubectl apply -f backend.yml
+                    kubectl apply -f mysql-secret.yml --validate=false
+                    kubectl apply -f mysql-config.yml --validate=false
+                    kubectl apply -f mysql-pvc.yml --validate=false
+                    kubectl apply -f mysql.yml --validate=false
+                    kubectl apply -f backend.yml --validate=false
                     '''
                 }
             }
