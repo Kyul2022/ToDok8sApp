@@ -14,27 +14,28 @@ spec:
     metadata:
       labels:
         app: backend
-    containers:
-    - name: backend
-      image: todok8s-backend:latest
-      ports:
-      - name: port
-        containerPort: 8081
-      env:
-      - name: DB_URL
-        valueFrom:
-          configMapKeyRef:
-            name: mysql-config
-            key: mysql-url
-      - name: DB_PASSWORD
-        valueFrom:
-          secretKeyRef:
+    spec:
+      containers:
+      - name: backend
+        image: todok8s-backend:latest
+        ports:
+        - name: port
+          containerPort: 8081
+        env:
+        - name: DB_URL
+          valueFrom:
+            configMapKeyRef:
+              name: mysql-config
+              key: mysql-url
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mysql-secret
+              key: mysql-secret
+        - name: DB_USERNAME
+          valueFrom:
             name: mysql-secret
-            key: mysql-secret
-      - name: DB_USERNAME
-        valueFrom:
-          name: mysql-secret
-          key: mysql-user
+            key: mysql-user
 ---
 apiVersion: v1
 kind: Service
