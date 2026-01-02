@@ -61,7 +61,8 @@ spec:
       mountPath: /root/.docker
   volumes:
     - name: docker-sock
-      hostPath: /var/run/docker.sock
+      hostPath:
+        path: /var/run/docker.sock
     - name: docker-hub-secret
       secret: 
         secretName: docker-hub-secret
