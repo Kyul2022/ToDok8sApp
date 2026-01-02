@@ -34,8 +34,9 @@ spec:
               key: mysql-secret
         - name: DB_USERNAME
           valueFrom:
-            name: mysql-secret
-            key: mysql-user
+            secretKeyRef:
+              name: mysql-secret
+              key: mysql-user
 ---
 apiVersion: v1
 kind: Service
