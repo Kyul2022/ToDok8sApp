@@ -97,6 +97,7 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: deploy-to-dockerhub
+  namespace: todok8s
 spec:
   serviceaccountName: todo
   containers:
