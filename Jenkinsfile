@@ -29,7 +29,7 @@ spec:
                             sh '''
         echo "=== Debug ==="
         ls -la src/test/resources/
-        cat src/test/resources/application.properties
+        cat src/test/resources/application-test.properties
         
         echo "=== Tests ==="
         mvn clean test
