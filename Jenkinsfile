@@ -27,7 +27,7 @@ spec:
                 container('java-test') {
                     script {
                         sh '''
-                        mvn test
+                        mvn test -Dspring.profiles.active=test
                         '''
                     }
                 }
