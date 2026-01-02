@@ -26,9 +26,14 @@ spec:
                 checkout scm
                 container('java-test') {
                     script {
-                        sh '''
-                        mvn test -Dspring.profiles.active=test
-                        '''
+                            sh '''
+        echo "=== Debug ==="
+        ls -la src/test/resources/
+        cat src/test/resources/application.properties
+        
+        echo "=== Tests ==="
+        mvn clean test
+    '''
                     }
                 }
             }
