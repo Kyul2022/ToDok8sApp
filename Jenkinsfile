@@ -72,15 +72,17 @@ spec:
                 checkout scm
                 container('docker') {
                     script {
+                        sh '''
                         docker build -t kyul1234/todo4k8s:latest .
                         docker push kyul1234/todo4k8s:latest
+                        '''
                     }
                 }
             }
          
                 }
 
-    stage ('deploy to docker hub')
+    stage ('deploy to docker hub') {
         agent {
             kubernetes {
                 label 'docker agent'
@@ -104,16 +106,18 @@ spec:
             checkout scm
             container ('kubectl') {
                 script {
+                    sh '''
                     cd manifests/
                     kubectl apply -f mysql-secret.yml
                     kubectl apply -f mysql-config.yml
                     kubectl apply -f mysql-pvc.yml
                     kubectl apply -f mysql.yml
                     kubectl apply -f backend.yml
+                    '''
                 }
             }
         }
-
+    }
 
             }
         }
