@@ -99,7 +99,7 @@ metadata:
   name: deploy-to-dockerhub
 spec:
   serviceaccountName: todo
-  container:
+  containers:
   - name: kubectl
     image: alpine/k8s:1.32.11
     command:
